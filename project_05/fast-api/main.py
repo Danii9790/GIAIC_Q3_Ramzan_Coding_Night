@@ -1,9 +1,9 @@
 from fastapi import FastAPI
 import random
 
-app =FastAPI()
+app = FastAPI()
 
-side_hustles =[
+side_hustles = [
     "Freelancing - Start offering your skills online!",
     "Dropshipping - Sell without handling inventory!",
     "Stock Market - Invest and watch your money grow!",
@@ -35,20 +35,25 @@ money_quotes = [
     "Money grows on the tree of persistence. – Japanese Proverb",
 ]
 
+@app.get("/")
+async def root():
+    return {
+        "message": "Welcome to the FastAPI Hustle & Quotes API!",
+        "endpoints": {
+            "/side_hustles": "Get a random side hustle idea",
+            "/money_quotes": "Get a random money quote",
+            "/docs": "Visit Swagger UI",
+            "/redoc": "Visit ReDoc UI"
+        }
+    }
+
 @app.get("/side_hustles")
 async def get_side_hustles():
-    """"Returns a random side hustles idea"""
-    # if apikey !="12345678":
-    #     return { "error" : "Invalid api key"}
-    return {"side_hustles" : random.choice(side_hustles)}
+    """Returns a random side hustle idea"""
+    return {"side_hustle": random.choice(side_hustles)}
 
 @app.get("/money_quotes")
 async def get_money_quotes():
-    """Return a random money quotes"""
-    # if apikey !="12345678":
-    #     return { "error" : "Invalid api key"}   
-    return {"Money_quotes" : random.choice(money_quotes)}
-
-
-
+    """Returns a random money quote"""
+    return {"money_quote": random.choice(money_quotes)}
 
