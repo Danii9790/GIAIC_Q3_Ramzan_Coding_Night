@@ -17,14 +17,14 @@ if st.button("Generate Money"):
 
 def fetch_side_hustles():
     try:
-        reponse=requests.get("http://127.0.0.1:8000/side_hustles?apikey=12345678")
-        if reponse.status_code == 200:
-            hustles=reponse.json()
-            return hustles["side_hustles"]
+        response=requests.get("https://fastapi-eosin-iota.vercel.app/side_hustles")
+        if response.status_code == 200:
+            data=response.json()
+            return data.get("side_hustle","Side_hustles not found.")
         else:
-            return ("freelancing")
-    except:
-        return ("Something went wrong.")
+            return ("No Side_hustles left.")
+    except Exception as e:
+        return f"Something went wrong: {e}"
     
 st.header("Side Hustles Idaes")
 if st.button("Generate Hustle"):
@@ -33,14 +33,14 @@ if st.button("Generate Hustle"):
 
 def money_quotes():
     try:
-        reponse=requests.get("http://127.0.0.1:8000/money_quotes?apikey=12345678")
-        if reponse.status_code == 200:
-            quotes=reponse.json()
-            return quotes["Money_quotes"]
+        response = requests.get("https://fastapi-eosin-iota.vercel.app/money_quotes")
+        if response.status_code == 200:
+            data = response.json()
+            return data.get("money_quote", "Quote not found.")
         else:
-            return ("No quotes left")
-    except:
-        return ("Something went wrong.")
+            return f"Server returned status code: {response.status_code}"
+    except Exception as e:
+        return f"Something went wrong: {e}"
 
 st.header("Money Quotes")
 if st.button("Generate Money Quotes"):
