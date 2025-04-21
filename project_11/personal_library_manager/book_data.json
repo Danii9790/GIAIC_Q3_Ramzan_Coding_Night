@@ -1,0 +1,23 @@
+[
+    {
+        "title": "jamal",
+        "author": "rajput",
+        "publication_year": 2000,
+        "book_genre": "male",
+        "read": false
+    },
+    {
+        "title": "ahamd",
+        "author": "ashraf",
+        "publication_year": 2008,
+        "book_genre": "male",
+        "read": false
+    },
+    {
+        "title": "ashraf",
+        "author": "ali",
+        "publication_year": 1976,
+        "book_genre": "job",
+        "read": true
+    }
+]
